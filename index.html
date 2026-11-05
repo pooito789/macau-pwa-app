@@ -629,7 +629,8 @@
       // 設置網格樣式與高度適應
       if (gridMode === '9') {
         container.className = "grid grid-cols-3 gap-2 sm:gap-2.5 w-full max-w-md mx-auto";
-        heightClass = 'h-32 sm:h-36 p-3';
+        // 九宮格模式高度拉長 0.2 倍 (h-38 sm:h-44)
+        heightClass = 'h-38 sm:h-44 p-3';
       } else if (gridMode === '8') {
         // 2 直行 8 格模式：高度適當拉長，完美充滿整個螢幕高度
         container.className = "grid grid-cols-2 gap-2.5 sm:gap-3 w-full max-w-md mx-auto";
