@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>消費大師</title>
+  
+  <!-- Mobile & PWA Meta Tags -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="消費大師">
+  <meta name="theme-color" content="#007A5E">
+  
+  <!-- PWA App Name -->
+  <meta name="application-name" content="消費大師">
+
+  <!-- 澳門區旗風格 PWA 桌面圖示 (Data URL 格式 SVG/PNG) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='100' fill='%23007A5E'/%3E%3Cg transform='translate(256 340)' fill='%23FFFFFF'%3E%3Cpath d='M-180 50 Q0 -20 180 50 Q0 30 -180 50 Z'/%3E%3Cpath d='M-150 70 Q0 10 150 70 Q0 45 -150 70 Z'/%3E%3Cpath d='M0 -140 C-30 -100 -80 -70 -120 -30 C-60 -40 -20 -10 0 40 C20 -10 60 -40 120 -30 C80 -70 30 -100 0 -140 Z'/%3E%3C/g%3E%3Cpath d='M256 70 L264 96 L292 96 L269 112 L278 138 L256 122 L234 138 L243 112 L220 96 L248 96 Z' fill='%23FFDF00'/%3E%3Cg fill='%23FFDF00'%3E%3Cpath d='M170 100 L176 118 L195 118 L179 129 L185 147 L170 136 L155 147 L161 129 L145 118 L164 118 Z' transform='scale(0.7) translate(70 30)'/%3E%3Cpath d='M342 100 L348 118 L367 118 L351 129 L357 147 L342 136 L327 147 L333 129 L317 118 L336 118 Z' transform='scale(0.7) translate(140 30)'/%3E%3C/g%3E%3C/svg%3E">
+
+  <!-- Apple iOS 桌面圖標 -->
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='100' fill='%23007A5E'/%3E%3Cg transform='translate(256 340)' fill='%23FFFFFF'%3E%3Cpath d='M-180 50 Q0 -20 180 50 Q0 30 -180 50 Z'/%3E%3Cpath d='M-150 70 Q0 10 150 70 Q0 45 -150 70 Z'/%3E%3Cpath d='M0 -140 C-30 -100 -80 -70 -120 -30 C-60 -40 -20 -10 0 40 C20 -10 60 -40 120 -30 C80 -70 30 -100 0 -140 Z'/%3E%3C/g%3E%3Cpath d='M256 70 L264 96 L292 96 L269 112 L278 138 L256 122 L234 138 L243 112 L220 96 L248 96 Z' fill='%23FFDF00'/%3E%3Cg fill='%23FFDF00'%3E%3Cpath d='M170 100 L176 118 L195 118 L179 129 L185 147 L170 136 L155 147 L161 129 L145 118 L164 118 Z' transform='scale(0.7) translate(70 30)'/%3E%3Cpath d='M342 100 L348 118 L367 118 L351 129 L357 147 L342 136 L327 147 L333 129 L317 118 L336 118 Z' transform='scale(0.7) translate(140 30)'/%3E%3C/g%3E%3C/svg%3E">
+
+  <!-- Android Chrome PWA Web App Manifest (內建五星白蓮澳門綠背景圖標) -->
+  <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22%E6%B6%88%E8%B2%BB%E5%A4%A7%E5%B8%AB%22%2C%22short_name%22%3A%22%E6%B6%88%E8%B2%BB%E5%A4%A7%E5%B8%AB%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23007A5E%22%2C%22theme_color%22%3A%22%23007A5E%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20512%20512%27%253E%253Crect%20width%3D%27512%27%20height%3D%27512%27%20rx%3D%27100%27%20fill%3D%27%2523007A5E%27%2F%253E%253Cg%20transform%3D%27translate(256%20340)%27%20fill%3D%27%2523FFFFFF%27%253E%253Cpath%20d%3D%27M-180%2050%20Q0%20-20%20180%2050%20Q0%2030%20-180%2050%20Z%27%2F%253E%253Cpath%20d%3D%27M-150%2070%20Q0%2010%20150%2070%20Q0%2045%20-150%2070%20Z%27%2F%253E%253Cpath%20d%3D%27M0%20-140%20C-30%20-100%20-80%20-70%20-120%20-30%20C-60%20-40%20-20%20-10%200%2040%20C20%20-10%2060%20-40%20120%20-30%20C80%20-70%2030%20-100%200%20-140%20Z%27%2F%253E%253C%2Fg%253E%253Cpath%20d%3D%27M256%2070%20L264%2096%20L292%2096%20L269%20112%20L278%20138%20L256%20122%20L234%20138%20L243%20112%20L220%2096%20L248%2096%20Z%27%20fill%3D%27%2523FFDF00%27%2F%253E%253Cg%20fill%3D%27%2523FFDF00%27%253E%253Cpath%20d%3D%27M170%20100%20L176%20118%20L195%20118%20L179%20129%20L185%20147%20L170%20136%20L155%20147%20L161%20129%20L145%20118%20L164%20118%20Z%27%20transform%3D%27scale(0.7)%20translate(70%2030)%27%2F%253E%253Cpath%20d%3D%27M342%20100%20L348%20118%20L367%20118%20L351%20129%20L357%20147%20L342%20136%20L327%20147%20L333%20129%20L317%20118%20L336%20118%20Z%27%20transform%3D%27scale(0.7)%20translate(140%2030)%27%2F%253E%253C%2Fg%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: 導入優雅典雅的隸書/襯線書法字體 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+TC:wght@700;900&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+  <!-- Sortable.js with Swap Plugin for Drag and Drop -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+  <!-- QRCode.js for generating QR Code inside share modal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+            calligraphy: ['"LiSu"', '"隸書"', '"STLiti"', '"Noto Serif TC"', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    /* 典雅端莊傳統隸書 */
+    .font-calligraphy {
+      font-family: 'LiSu', '隸書', 'STLiti', 'Baoli SC', 'Noto Serif TC', serif;
+      letter-spacing: 0.1em;
+    }
+
+    /* 篆刻風格紅色小印章 (橫向擺放於右上角) */
+    .stamp-seal {
+      display: inline-block;
+      border: 1px solid #dc2626;
+      background-color: #b91c1c;
+      color: #fef2f2;
+      font-family: 'Noto Serif TC', serif;
+      font-weight: 900;
+      padding: 0px 3px;
+      border-radius: 2px;
+      box-shadow: inset 0 0 2px rgba(0,0,0,0.4), 0 1px 2px rgba(185,28,28,0.4);
+      transform: rotate(4deg);
+      line-height: 1.2;
+      text-shadow: 0.5px 0.5px 0px rgba(0, 0, 0, 0.3);
+      writing-mode: horizontal-tb;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .bubble-card {
+      transition: transform 0.15s ease, box-shadow 0.25s ease, background-color 0.2s ease, border-color 0.2s ease;
+      touch-action: pan-y; /* 允許在泡泡卡片上順暢地進行上下垂直滾動 */
+    }
+    .bubble-card:active {
+      transform: scale(0.98);
+    }
+    
+    /* 拔出來（拖拽中）的動態浮空效果 */
+    .sortable-drag {
+      opacity: 0.98 !important;
+      transform: scale(1.08) rotate(2deg) !important;
+      box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.5), 0 0 25px rgba(245, 158, 11, 0.6) !important;
+      z-index: 9999 !important;
+      cursor: grabbing !important;
+    }
+
+    .sortable-ghost {
+      opacity: 0.25;
+      transform: scale(0.95);
+    }
+
+    .modal-enter {
+      animation: modalIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.92) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col justify-between p-3 sm:p-5 font-sans select-none antialiased transition-colors duration-300">
+
+  <!-- 頂部標題與管理按鈕（增加了適度下邊距 mb-2） -->
+  <header class="w-full max-w-md mx-auto pt-1 pb-2 relative flex flex-col items-center mb-2">
+    <div class="w-full flex justify-between items-center mb-1">
+      <div class="relative inline-flex items-center">
+        <!-- 傳統典雅隸書標題 -->
+        <h1 class="font-calligraphy text-4xl sm:text-5xl font-extrabold tracking-widest text-amber-400 dark:text-amber-300 drop-shadow-md leading-none py-1">消費大師</h1>
+        <!-- 橫向精緻小紅章 (定位於右上角) -->
+        <div class="stamp-seal text-[7px] sm:text-[8px] absolute -top-1 -right-11 sm:-right-12">安生製造</div>
+      </div>
+      
+      <!-- 控制按鈕區：九宮格/8格/6格切換 & 深淺色主題切換 -->
+      <div class="flex items-center space-x-1.5">
+        <button id="btn-grid-toggle" class="bg-slate-800 dark:bg-slate-800 border border-slate-700 text-slate-300 px-2.5 py-1.5 rounded-full text-xs font-semibold flex items-center space-x-1 shadow-md active:scale-95 transition">
+          <span id="grid-icon">🧩</span>
+          <span id="grid-text">6格</span>
+        </button>
+
+        <button id="btn-theme-toggle" class="bg-slate-800 dark:bg-slate-800 border border-slate-700 text-slate-300 px-2.5 py-1.5 rounded-full text-xs font-semibold flex items-center space-x-1 shadow-md active:scale-95 transition">
+          <span id="theme-icon">🌙</span>
+          <span id="theme-text">深色</span>
+        </button>
+      </div>
+    </div>
+
+    <p class="text-xs text-slate-400 dark:text-slate-400 mb-1">按住橫線拖拽排序｜按泡泡輸入最多 3 個金額</p>
+
+    <!-- 操作按鈕列（第一列）：重置 / 一鍵核銷 / 特效選單 -->
+    <div class="flex flex-wrap justify-center gap-1.5 my-0.5">
+      <button id="btn-undo" disabled class="inline-flex items-center space-x-1 bg-slate-800 disabled:opacity-40 text-amber-300 text-xs font-bold px-2.5 py-1.5 rounded-full border border-slate-700 shadow-sm transition active:scale-95 cursor-pointer disabled:cursor-not-allowed">
+        <span>↩️ 復原上步</span>
+      </button>
+
+      <button id="btn-reset-default" class="inline-flex items-center space-x-1 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold px-2.5 py-1.5 rounded-full border border-slate-700 shadow-sm transition active:scale-95">
+        <span>🔄 還原預設</span>
+      </button>
+
+      <button id="btn-clear-all-platforms" class="inline-flex items-center space-x-1 bg-rose-500/20 hover:bg-rose-500/30 text-rose-400 text-xs font-bold px-2.5 py-1.5 rounded-full border border-rose-500/40 shadow-sm transition active:scale-95">
+        <span>🧹 一鍵核銷</span>
+      </button>
+
+      <button id="btn-toggle-fx" class="inline-flex items-center space-x-1 bg-slate-700/60 hover:bg-slate-700/80 text-slate-200 text-xs font-bold px-2.5 py-1.5 rounded-full border border-slate-600 shadow-sm transition active:scale-95">
+        <span>⚡ 特效控制</span>
+      </button>
+    </div>
+
+    <!-- 操作按鈕列（第二列）：新增至主畫面 / 還原機構 / 分享APP -->
+    <div class="flex flex-wrap justify-center gap-1.5 my-0.5">
+      <button id="btn-install-pwa" class="inline-flex items-center space-x-1 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 text-xs font-bold px-3 py-1.5 rounded-full border border-emerald-500/40 shadow-sm transition active:scale-95">
+        <span>📲 新增至主畫面</span>
+      </button>
+
+      <button id="btn-open-add-bank" class="inline-flex items-center space-x-1 bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 text-xs font-bold px-3 py-1.5 rounded-full border border-amber-500/40 shadow-sm transition active:scale-95">
+        <span>+ 隱藏/還原機構</span>
+      </button>
+
+      <button id="btn-share-app" class="inline-flex items-center space-x-1 bg-sky-500/20 hover:bg-sky-500/30 text-sky-400 text-xs font-bold px-3 py-1.5 rounded-full border border-sky-500/40 shadow-sm transition active:scale-95">
+        <span>🔗 分享給朋友</span>
+      </button>
+    </div>
+
+    <!-- 新增：各金額統計與全平台總額橫條（位於按鈕與泡泡之間） -->
+    <div id="stats-summary-bar" class="w-full max-w-md mx-auto mt-2 px-3 py-1.5 bg-slate-900/80 dark:bg-slate-900/80 border border-slate-800 rounded-xl flex items-center justify-between gap-2 overflow-x-auto text-[11px] text-slate-300 shadow-inner">
+      <!-- 統計數據由 JavaScript 動態渲染 -->
+    </div>
+  </header>
+
+  <!-- 主畫面：銀行/支付工具 泡泡網格（增加 pt-3 微幅向下移動） -->
+  <main class="flex-1 flex items-start justify-center pt-3 sm:pt-4 pb-2 w-full">
+    <div id="bubble-container" class="grid gap-2.5 sm:gap-3.5 w-full max-w-md mx-auto transition-all duration-300">
+      <!-- 泡泡動態由 JavaScript 載入 -->
+    </div>
+  </main>
+
+  <footer class="text-center py-1 text-[11px] text-slate-500 dark:text-slate-500 flex flex-col items-center gap-0.5">
+    <span>⚡ PWA 支援離線自動儲存中</span>
+  </footer>
+
+  <!-- 彈出視窗 1：選擇與管理金額 -->
+  <div id="modal-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 z-50 hidden">
+    <div id="modal-content" class="bg-slate-900 dark:bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-xs sm:max-w-sm p-5 shadow-2xl modal-enter relative text-slate-100">
+      
+      <!-- 標題欄 -->
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div class="flex items-center space-x-3">
+          <div id="modal-icon" class="w-10 h-10 rounded-2xl flex items-center justify-center font-bold text-lg text-white shadow-md overflow-hidden relative p-1.5"></div>
+          <div>
+            <h2 id="modal-title" class="text-xl font-bold text-white">--</h2>
+            <p id="modal-subtitle" class="text-xs text-slate-400">選擇金額 (最多 3 個)</p>
+          </div>
+        </div>
+        <!-- 頂部按鈕：改為隱藏泡泡 -->
+        <button id="btn-delete-bubble" class="bg-rose-600/20 hover:bg-rose-600/30 text-rose-300 font-semibold py-1.5 px-3 rounded-xl border border-rose-500/30 text-xs flex items-center justify-center transition active:scale-95">
+          隱藏此泡泡
+        </button>
+      </div>
+
+      <!-- 已選金額展示區 -->
+      <div class="my-4 bg-slate-950/80 rounded-2xl p-4 border border-slate-800 text-center">
+        <div class="text-xs text-slate-400 mb-2 flex justify-between items-center px-1">
+          <span>已選取金額組合</span>
+          <span id="modal-count-tag" class="text-amber-400 font-semibold">0/3</span>
+        </div>
+
+        <!-- 顯示選擇的金額標籤 -->
+        <div id="selected-items-list" class="min-h-[52px] flex flex-wrap items-center justify-center gap-2 py-1">
+          <!-- 項目帶有 ✕ 刪除按鈕 -->
+        </div>
+
+        <!-- 總和小字標示 -->
+        <div class="mt-3 pt-2 border-t border-slate-800/80 flex justify-between items-center text-xs">
+          <span class="text-slate-400">總計金額：</span>
+          <span class="text-amber-400 text-xl font-black">$<span id="modal-total-sum">0</span></span>
+        </div>
+      </div>
+
+      <!-- 快捷金額選擇按鈕 ($10, $20, $50, $100, $200) -->
+      <div class="space-y-3">
+        <div class="text-xs text-slate-300 font-medium">點擊金額直接加入：</div>
+        <div class="grid grid-cols-3 gap-2">
+          <button class="btn-amount-pick bg-slate-800 hover:bg-amber-400/20 hover:border-amber-400/60 text-slate-100 font-bold text-lg py-2.5 rounded-xl border border-slate-700/80 transition active:scale-95" data-val="10">$10</button>
+          <button class="btn-amount-pick bg-slate-800 hover:bg-amber-400/20 hover:border-amber-400/60 text-slate-100 font-bold text-lg py-2.5 rounded-xl border border-slate-700/80 transition active:scale-95" data-val="20">$20</button>
+          <button class="btn-amount-pick bg-slate-800 hover:bg-amber-400/20 hover:border-amber-400/60 text-slate-100 font-bold text-lg py-2.5 rounded-xl border border-slate-700/80 transition active:scale-95" data-val="50">$50</button>
+          <button class="btn-amount-pick bg-slate-800 hover:bg-amber-400/20 hover:border-amber-400/60 text-slate-100 font-bold text-lg py-2.5 rounded-xl border border-slate-700/80 transition active:scale-95" data-val="100">$100</button>
+          <button class="btn-amount-pick bg-slate-800 hover:bg-amber-400/20 hover:border-amber-400/60 text-slate-100 font-bold text-lg py-2.5 rounded-xl border border-slate-700/80 transition active:scale-95" data-val="200">$200</button>
+        </div>
+
+        <hr class="border-slate-800 my-3">
+
+        <!-- 底部選項：關閉與清理 -->
+        <div class="flex gap-2">
+          <button id="btn-close" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold py-2.5 px-3 rounded-xl border border-slate-700 text-xs transition active:scale-95 flex items-center justify-center">
+            關閉視窗
+          </button>
+          <button id="btn-clear-all" class="bg-slate-800 hover:bg-rose-950/40 text-slate-400 hover:text-rose-400 font-medium py-2.5 px-3 rounded-xl border border-slate-700 text-xs transition">
+            一併刪除 (清空)
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 彈出視窗 2：從固定 8 家銀行選取還原 -->
+  <div id="add-modal-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 z-50 hidden">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-xs p-5 shadow-2xl modal-enter text-slate-100">
+      <h3 class="text-lg font-bold text-white mb-1">還原/顯示銀行泡泡</h3>
+      <p class="text-xs text-slate-400 mb-4">點擊下方已隱藏的機構將其加回主頁：</p>
+      
+      <div id="hidden-banks-list" class="space-y-2 max-h-60 overflow-y-auto pr-1">
+        <!-- 動態列出目前被隱藏的銀行 -->
+      </div>
+
+      <div class="mt-5">
+        <button id="btn-cancel-add" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-2.5 rounded-xl text-xs">關閉</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 彈出視窗 3：分享、QR Code 與資料備份/匯入 -->
+  <div id="share-modal-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 z-50 hidden">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-xs sm:max-w-sm p-5 shadow-2xl modal-enter text-slate-100 relative">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <h3 class="text-lg font-bold text-white">分享與資料管理</h3>
+        <button id="btn-close-share" class="text-slate-400 hover:text-white text-2xl font-light p-1 focus:outline-none">&times;</button>
+      </div>
+
+      <div class="my-4 space-y-4">
+        <!-- 手機分享選單 / 複製連結 -->
+        <div>
+          <label class="text-xs text-slate-400 mb-1.5 block">手機快速分享 APP</label>
+          <button id="btn-native-share" class="w-full bg-sky-600 hover:bg-sky-500 text-white font-bold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center space-x-2 transition active:scale-95 shadow-lg shadow-sky-900/30">
+            <span>📲 呼叫手機分享面板 / 複製網址</span>
+          </button>
+        </div>
+
+        <!-- 顯示 QR Code 給朋友掃描 -->
+        <div class="bg-slate-950/80 p-3 rounded-2xl border border-slate-800 text-center flex flex-col items-center justify-center">
+          <span class="text-xs text-slate-400 mb-2">掃描 QR Code 開啟網頁</span>
+          <div id="qrcode-container" class="bg-white p-2 rounded-xl shadow-md min-w-[128px] min-h-[128px] flex items-center justify-center"></div>
+        </div>
+
+        <!-- 資料備份與匯入 -->
+        <div class="pt-2 border-t border-slate-800 space-y-2">
+          <label class="text-xs text-slate-400 block">備份與跨裝置轉移紀錄</label>
+          <div class="grid grid-cols-2 gap-2">
+            <button id="btn-export-json" class="bg-slate-800 hover:bg-slate-700 text-amber-300 font-bold py-2 px-3 rounded-xl border border-slate-700 text-xs transition active:scale-95">
+              📥 導出數據備份
+            </button>
+            <label class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold py-2 px-3 rounded-xl border border-slate-700 text-xs text-center cursor-pointer transition active:scale-95">
+              📤 匯入備份檔
+              <input type="file" id="file-import-json" accept=".json" class="hidden">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 彈出視窗 4：新增至主畫面 PWA 安裝指引 -->
+  <div id="install-modal-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 z-50 hidden">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-xs sm:max-w-sm p-5 shadow-2xl modal-enter text-slate-100 relative">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <h3 class="text-lg font-bold text-white">新增至手機主畫面</h3>
+        <button id="btn-close-install" class="text-slate-400 hover:text-white text-2xl font-light p-1 focus:outline-none">&times;</button>
+      </div>
+      <div class="my-4 space-y-3 text-xs text-slate-300">
+        <p class="text-amber-400 font-semibold">📱 請根據您的手機系統進行新增：</p>
+
+        <div class="space-y-2 bg-slate-950/80 p-3 rounded-2xl border border-slate-800">
+          <div class="text-slate-200 font-bold border-b border-slate-800 pb-1"> Apple iOS (Safari)</div>
+          <p class="text-[11px] text-slate-400">1. 點擊 Safari 底部欄中間的<span class="text-amber-300 font-bold">「分享 ⎘」</span>按鈕。</p>
+          <p class="text-[11px] text-slate-400">2. 往下滑選單並點選<span class="text-amber-300 font-bold">「新增至主螢幕」</span>。</p>
+        </div>
+
+        <div class="space-y-2 bg-slate-950/80 p-3 rounded-2xl border border-slate-800">
+          <div class="text-slate-200 font-bold border-b border-slate-800 pb-1">🤖 Android (Chrome / Edge)</div>
+          <p class="text-[11px] text-slate-400">1. 點擊右上角的選單按鈕<span class="text-amber-300 font-bold">「⋮」</span>。</p>
+          <p class="text-[11px] text-slate-400">2. 點選<span class="text-amber-300 font-bold">「新增至主螢幕」</span>或<span class="text-amber-300 font-bold">「安裝應用程式」</span>。</p>
+        </div>
+
+        <button id="btn-trigger-pwa-prompt" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold py-2.5 rounded-xl text-xs transition active:scale-95 border border-slate-700 mt-2">
+          我知道了 (關閉)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 彈出視窗 5：關閉特效選單 (氛圍燈與 Logo 開關) -->
+  <div id="fx-modal-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 z-50 hidden">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-xs p-5 shadow-2xl modal-enter text-slate-100">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
+        <h3 class="text-lg font-bold text-white">⚡ 特效與視覺控制</h3>
+        <button id="btn-close-fx" class="text-slate-400 hover:text-white text-2xl font-light p-1 focus:outline-none">&times;</button>
+      </div>
+      
+      <div class="space-y-3">
+        <button id="btn-toggle-glow" class="w-full bg-slate-800 hover:bg-slate-700/80 border border-slate-700 text-left p-3.5 rounded-2xl flex items-center justify-between transition active:scale-95">
+          <div class="flex items-center space-x-3">
+            <span class="text-xl">💡</span>
+            <div>
+              <div class="font-bold text-sm text-slate-100">一鍵關閉/開啟氛圍燈</div>
+              <div class="text-[11px] text-slate-400">控制卡片周圍外發光色彩</div>
+            </div>
+          </div>
+          <span id="status-glow" class="text-xs font-bold px-2 py-1 rounded-lg bg-emerald-500/20 text-emerald-400">已開啟</span>
+        </button>
+
+        <button id="btn-toggle-logo" class="w-full bg-slate-800 hover:bg-slate-700/80 border border-slate-700 text-left p-3.5 rounded-2xl flex items-center justify-between transition active:scale-95">
+          <div class="flex items-center space-x-3">
+            <span class="text-xl">🖼️</span>
+            <div>
+              <div class="font-bold text-sm text-slate-100">一鍵關閉/開啟 Logo</div>
+              <div class="text-[11px] text-slate-400">控制卡片左下角半透明 Logo</div>
+            </div>
+          </div>
+          <span id="status-logo" class="text-xs font-bold px-2 py-1 rounded-lg bg-emerald-500/20 text-emerald-400">已開啟</span>
+        </button>
+      </div>
+
+      <div class="mt-5">
+        <button id="btn-cancel-fx" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-2.5 rounded-xl text-xs">關閉</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 固定的 8 家澳門主要金融/支付機構數據庫與 SVG Logo
+    const ALL_BANKS_POOL = [
+      { 
+        id: 'mpay', 
+        name: 'MPay 澳門通', 
+        color: '#FF5500', 
+        glowColor: 'rgba(255, 85, 0, 0.75)',
+        glowColorLight: 'rgba(255, 85, 0, 0.55)',
+        svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><circle cx="50" cy="50" r="45" fill="#FF5500"/><text x="50" y="60" font-size="32" font-weight="900" fill="#FFF" text-anchor="middle">M</text></svg>`
+      },
+      { 
+        id: 'boc', 
+        name: '中國銀行', 
+        color: '#B71C1C', 
+        glowColor: 'rgba(220, 38, 38, 0.55)',
+        glowColorLight: 'rgba(220, 38, 38, 0.35)',
+        svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><circle cx="50" cy="50" r="45" fill="#B71C1C"/><circle cx="50" cy="50" r="25" fill="none" stroke="#FFF" stroke-width="8"/><rect x="42" y="15" width="16" height="70" fill="#FFF"/><rect x="15" y="42" width="70" height="16" fill="#FFF"/><circle cx="50" cy="50" r="12" fill="#B71C1C"/></svg>`
+      },
+      { 
+        id: 'uepay', 
+        name: 'UEPAY 極易付', 
+        color: '#7C3AED', 
+        glowColor: 'rgba(168, 85, 247, 0.65)',
+        glowColorLight: 'rgba(168, 85, 247, 0.45)',
+        svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><circle cx="50" cy="50" r="45" fill="#7C3AED"/><text x="50" y="62" font-size="28" font-weight="900" fill="#FFF" text-anchor="middle" font-family="sans-serif">UE</text></svg>`
+      },
+      { 
+        id: 'taifung', 
+        name: '大豐銀行', 
+        color: '#EAB308', 
+        glowColor: 'rgba(234, 179, 8, 0.75)',
+        glowColorLight: 'rgba(234, 179, 8, 0.55)',
+        svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><circle cx="50" cy="50" r="45" fill="#EAB308"/><path d="M30,30 L70,30 L50,75 Z" fill="#FFF"/><text x="50" y="45" font-size="18" font-weight="900" fill="#EAB308" text-anchor="middle">TF</text></svg>`
+      },
+      { 
+        id: 'icbc', 
+        name: '工銀澳門', 
+        color: '#FF69B4', 
+        glowColor: 'rgba(255, 105, 180, 0.65)',
+        glowColorLight: 'rgba(255, 105, 180, 0.45)',
+        svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><circle cx="50" cy="50" r="45" fill="#FF69B4"/><circle cx="50" cy="50" r="28" fill="none" stroke="#FFF" stroke-width="10"/><rect x="44" y="20" width="12" height="60" fill="#FFF"/></svg>`
+      },
+      { 
+        id: 'luso', 
+        name: '國際銀行', 
+        color: '#1565C0', 
+        glowColor: 'rgba(59, 130, 246, 0.6)',
+        glowColorLight: 'rgba(59, 130, 246, 0.4)',
+        svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><circle cx="50" cy="50" r="45" fill="#1565C0"/><polygon points="50,18 80,80 20,80" fill="#FFF"/><polygon points="50,35 68,72 32,72" fill="#1565C0"/></svg>`
+      },
+      { 
+        id: 'alipay', 
+        name: '支付寶澳門', 
+        color: '#1677FF', 
+        glowColor: 'rgba(14, 165, 233, 0.65)',
+        glowColorLight: 'rgba(14, 165, 233, 0.45)',
+        svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><circle cx="50" cy="50" r="45" fill="#1677FF"/><text x="50" y="65" font-size="45" font-weight="900" fill="#FFF" text-anchor="middle">支</text></svg>`
+      },
+      { 
+        id: 'gdb', 
+        name: '廣發銀行', 
+        color: '#10B981', 
+        glowColor: 'rgba(16, 185, 129, 0.6)',
+        glowColorLight: 'rgba(16, 185, 129, 0.4)',
+        svg: `<svg viewBox="0 0 100 100" class="w-full h-full"><circle cx="50" cy="50" r="45" fill="#C2185B"/><polygon points="50,20 80,50 50,80 20,50" fill="#FFF"/><polygon points="50,32 68,50 50,68 32,50" fill="#C2185B"/></svg>`
+      }
+    ];
+
+    const STORAGE_KEY_ACTIVE_IDS = 'macau_voucher_active_ids_v3';
+    const STORAGE_KEY_DATA = 'macau_voucher_selections_v3';
+    const STORAGE_KEY_THEME = 'macau_voucher_theme_v3';
+    const STORAGE_KEY_GRID = 'macau_voucher_grid_mode_v3';
+    const STORAGE_KEY_GLOW = 'macau_voucher_glow_v3';
+    const STORAGE_KEY_LOGO = 'macau_voucher_logo_v3';
+
+    let activeBankIds = loadActiveBankIds();
+    let selections = loadSelections();
+    let currentBankId = null;
+    let isDarkMode = localStorage.getItem(STORAGE_KEY_THEME) !== 'light';
+    // gridMode 支持: '6' (2x3), '8' (2x4), '9' (3x3)，預設為 '6'
+    let gridMode = localStorage.getItem(STORAGE_KEY_GRID) || '6';
+    let isGlowEnabled = localStorage.getItem(STORAGE_KEY_GLOW) !== 'false';
+    let isLogoEnabled = localStorage.getItem(STORAGE_KEY_LOGO) !== 'false';
+
+    // 復原 (Undo) 歷史紀錄狀態庫 (最多儲存 20 步)
+    let historyStack = [];
+    const MAX_HISTORY = 20;
+
+    function saveStateToHistory() {
+      if (historyStack.length >= MAX_HISTORY) {
+        historyStack.shift();
+      }
+      historyStack.push({
+        activeBankIds: JSON.parse(JSON.stringify(activeBankIds)),
+        selections: JSON.parse(JSON.stringify(selections))
+      });
+      updateUndoButtonState();
+    }
+
+    function undoLastAction() {
+      if (historyStack.length === 0) return;
+      const lastState = historyStack.pop();
+      activeBankIds = lastState.activeBankIds;
+      selections = lastState.selections;
+      saveActiveBankIds();
+      saveSelections();
+      renderBubbles();
+      if (currentBankId) {
+        updateModalSelectedList();
+      }
+      updateUndoButtonState();
+    }
+
+    function updateUndoButtonState() {
+      const undoBtn = document.getElementById('btn-undo');
+      if (undoBtn) {
+        undoBtn.disabled = historyStack.length === 0;
+      }
+    }
+
+    // 儲存 Android Chrome 的原生 PWA 安裝提示事件
+    let deferredPrompt = null;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+    });
+
+    function loadActiveBankIds() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY_ACTIVE_IDS);
+        return saved ? JSON.parse(saved) : ALL_BANKS_POOL.map(b => b.id);
+      } catch (e) {
+        return ALL_BANKS_POOL.map(b => b.id);
+      }
+    }
+
+    function saveActiveBankIds() {
+      try {
+        localStorage.setItem(STORAGE_KEY_ACTIVE_IDS, JSON.stringify(activeBankIds));
+      } catch (e) {}
+    }
+
+    function loadSelections() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY_DATA);
+        return saved ? JSON.parse(saved) : {};
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function saveSelections() {
+      try {
+        localStorage.setItem(STORAGE_KEY_DATA, JSON.stringify(selections));
+      } catch (e) {}
+    }
+
+    function getSum(arr) {
+      if (!Array.isArray(arr)) return 0;
+      return arr.reduce((a, b) => a + Number(b), 0);
+    }
+
+    // 主題套用
+    function applyTheme() {
+      const body = document.body;
+      const themeIcon = document.getElementById('theme-icon');
+      const themeText = document.getElementById('theme-text');
+
+      if (isDarkMode) {
+        body.classList.add('dark', 'bg-slate-950', 'text-slate-100');
+        body.classList.remove('bg-slate-100', 'text-slate-900');
+        themeIcon.textContent = '🌙';
+        themeText.textContent = '深色';
+      } else {
+        body.classList.remove('dark', 'bg-slate-950', 'text-slate-100');
+        body.classList.add('bg-slate-100', 'text-slate-900');
+        themeIcon.textContent = '☀️';
+        themeText.textContent = '淺色';
+      }
+      localStorage.setItem(STORAGE_KEY_THEME, isDarkMode ? 'dark' : 'light');
+      renderBubbles();
+    }
+
+    // 格局切換（6格 -> 8格 -> 九宮格 循環）
+    function applyGridMode() {
+      const gridBtnIcon = document.getElementById('grid-icon');
+      const gridBtnText = document.getElementById('grid-text');
+
+      if (gridMode === '6') {
+        gridBtnIcon.textContent = '🧩';
+        gridBtnText.textContent = '6格';
+      } else if (gridMode === '8') {
+        gridBtnIcon.textContent = '📱';
+        gridBtnText.textContent = '8格';
+      } else {
+        gridBtnIcon.textContent = '🔢';
+        gridBtnText.textContent = '九宮格';
+      }
+      localStorage.setItem(STORAGE_KEY_GRID, gridMode);
+      renderBubbles();
+    }
+
+    // 渲染主頁面泡泡
+    function renderBubbles() {
+      const container = document.getElementById('bubble-container');
+      container.innerHTML = '';
+
+      let heightClass = 'h-40 sm:h-44 p-4';
+
+      // 設置網格樣式與高度適應
+      if (gridMode === '9') {
+        container.className = "grid grid-cols-3 gap-2 sm:gap-2.5 w-full max-w-md mx-auto";
+        heightClass = 'h-32 sm:h-36 p-3';
+      } else if (gridMode === '8') {
+        // 2 直行 8 格模式：高度適當拉長，完美充滿整個螢幕高度
+        container.className = "grid grid-cols-2 gap-2.5 sm:gap-3 w-full max-w-md mx-auto";
+        heightClass = 'h-32 sm:h-36 p-3.5';
+      } else {
+        // 6 格模式還原回原版的標準網格
+        container.className = "grid grid-cols-2 gap-3 sm:gap-4 w-full max-w-md mx-auto";
+        heightClass = 'h-40 sm:h-44 p-4';
+      }
+
+      // 僅渲染存在於 activeBankIds 列表中的機構卡片
+      activeBankIds.forEach(id => {
+        const bank = ALL_BANKS_POOL.find(b => b.id === id);
+        
+        const isCompact = gridMode === '9';
+
+        // 若該機構存在但不在 bank 列表中（或為占位無效項），建立空位 placeholder
+        if (!bank) {
+          const emptySlot = document.createElement('div');
+          emptySlot.dataset.id = id;
+          emptySlot.className = `bubble-card relative rounded-2xl ${heightClass} border border-dashed border-slate-800/40 bg-slate-900/10 pointer-events-auto flex items-center justify-center transition-all duration-300`;
+          emptySlot.innerHTML = `<span class="text-sm text-slate-700/60 font-semibold select-none">—</span>`;
+          container.appendChild(emptySlot);
+          return;
+        }
+
+        const items = selections[bank.id] || [];
+        const total = getSum(items);
+        
+        // 所選金額的清楚標示列表
+        const selectedListStr = items.length > 0 
+          ? items.map(v => `$${v}`).join('  ') 
+          : '按此輸入金額';
+
+        const bubble = document.createElement('div');
+        bubble.dataset.id = bank.id;
+        
+        // 根據深淺色模式計算品牌專屬光暈
+        const currentGlow = isDarkMode ? bank.glowColor : bank.glowColorLight;
+        
+        const titleSize = isCompact 
+          ? 'text-xs sm:text-sm font-black' 
+          : 'text-sm sm:text-base font-black';
+          
+        const detailAmountSize = isCompact 
+          ? (items.length > 0 ? 'text-sm sm:text-base font-bold' : 'text-[11px] font-semibold text-slate-500/70')
+          : (items.length > 0 ? 'text-lg sm:text-xl font-bold' : 'text-xs font-semibold text-slate-500/70');
+              
+        const logoSize = isCompact ? 'w-16 h-16' : 'w-20 h-20';
+
+        bubble.className = `bubble-card relative overflow-hidden rounded-2xl ${heightClass} flex flex-col justify-between cursor-pointer border select-none transition-all duration-300 ${
+          isDarkMode 
+            ? 'bg-slate-900/90 border-slate-700/80 text-white' 
+            : 'bg-white/95 border-slate-200 text-slate-900 shadow-md'
+        }`;
+
+        // 外發光特效動態判斷
+        if (isGlowEnabled) {
+          bubble.style.boxShadow = `0 4px 20px -2px ${currentGlow}`;
+        }
+
+        // 卡片內部 HTML 結構 (右上角改為專屬拖動橫線手柄 drag-handle)
+        bubble.innerHTML = `
+          <!-- 卡片頂部名稱與點擊提示 -->
+          <div class="relative z-10 flex justify-between items-center">
+            <h3 class="${titleSize} tracking-wide truncate drop-shadow-sm">${bank.name}</h3>
+            <!-- 右上角拖動橫線手柄 (獨立觸發拖拽，防滾動誤觸) -->
+            <div class="drag-handle px-3 py-2 -mr-2 -mt-2 cursor-grab active:cursor-grabbing text-slate-400 hover:text-amber-400 transition-colors flex items-center justify-center touch-none">
+              <div class="w-5 h-1.5 bg-slate-500/60 rounded-full hover:bg-amber-400 transition-colors"></div>
+            </div>
+          </div>
+
+          <!-- 卡片中央：清楚呈現所選的三個金額 -->
+          <div class="relative z-10 my-auto pointer-events-none">
+            <div class="${detailAmountSize} ${items.length > 0 ? (isDarkMode ? 'text-amber-300' : 'text-amber-600') : ''} tracking-tight leading-snug">
+              ${selectedListStr}
+            </div>
+          </div>
+
+          <!-- 卡片右下角：總金額標示（調整字體更小更精緻） -->
+          <div class="relative z-10 flex justify-end items-center pointer-events-none">
+            ${items.length > 0 ? `
+              <div class="text-[9px] sm:text-[10px] font-semibold px-1.5 py-0.5 rounded-md ${
+                isDarkMode ? 'bg-amber-400/10 border border-amber-400/30 text-amber-400' : 'bg-amber-500/10 border border-amber-500/30 text-amber-700'
+              }">
+                總計 <span class="font-bold text-[9px] sm:text-[11px]">$${total}</span>
+              </div>
+            ` : `
+              <div class="text-[8px] opacity-30 italic">未紀錄</div>
+            `}
+          </div>
+
+          <!-- 卡片左下角半透明 Logo 特效 -->
+          ${isLogoEnabled ? `<div class="absolute -bottom-3 -left-3 ${logoSize} opacity-15 pointer-events-none transition-opacity duration-300">${bank.svg}</div>` : ''}
+        `;
+
+        // 智慧型觸控與點擊判定（滑動與點擊精確分離）
+        let touchStartY = 0;
+        let touchStartX = 0;
+        let isScrolling = false;
+
+        bubble.addEventListener('touchstart', (e) => {
+          if (e.target.closest('.drag-handle')) return;
+          touchStartY = e.touches[0].clientY;
+          touchStartX = e.touches[0].clientX;
+          isScrolling = false;
+        }, { passive: true });
+
+        bubble.addEventListener('touchmove', (e) => {
+          if (isScrolling) return;
+          const deltaY = Math.abs(e.touches[0].clientY - touchStartY);
+          const deltaX = Math.abs(e.touches[0].clientX - touchStartX);
+          if (deltaY > 6 || deltaX > 6) {
+            isScrolling = true; // 判定為上下滑動頁面，忽略後續點擊事件
+          }
+        }, { passive: true });
+
+        bubble.addEventListener('click', (e) => {
+          if (e.target.closest('.drag-handle')) return;
+          if (isScrolling) {
+            e.preventDefault();
+            return;
+          }
+          openModal(bank.id);
+        });
+
+        container.appendChild(bubble);
+      });
+
+      // 更新頂部金額加總統計列
+      renderStatsSummary();
+
+      // 初始化 Swap 拖拽排序功能
+      initSortable();
+    }
+
+    // 計算並渲染非隱藏泡泡的金額統計列與全平台總額
+    function renderStatsSummary() {
+      const summaryBar = document.getElementById('stats-summary-bar');
+      if (!summaryBar) return;
+
+      const counts = {};
+      let grandTotal = 0;
+
+      // 只計算目前在 activeBankIds 中且非空位的顯示泡泡
+      activeBankIds.forEach(id => {
+        if (id.startsWith('empty_')) return; // 隱藏/空位不計入
+        const items = selections[id] || [];
+        items.forEach(amt => {
+          const num = Number(amt);
+          counts[num] = (counts[num] || 0) + 1;
+          grandTotal += num;
+        });
+      });
+
+      // 排序金額面額 (從小到大)
+      const sortedAmts = Object.keys(counts).map(Number).sort((a, b) => a - b);
+
+      if (sortedAmts.length === 0) {
+        summaryBar.innerHTML = `
+          <span class="text-slate-500 italic">尚無任何金額紀錄</span>
+          <span class="font-black text-amber-400 ml-auto whitespace-nowrap">全平台: $0</span>
+        `;
+        return;
+      }
+
+      // 生成各金額加總個數標籤
+      const tagsHtml = sortedAmts.map(amt => `
+        <span class="inline-flex items-center gap-1 bg-slate-800/90 dark:bg-slate-800 px-2 py-0.5 rounded-lg border border-slate-700/80 whitespace-nowrap">
+          <span class="text-amber-300 font-bold">$${amt}</span>
+          <span class="text-slate-400">×${counts[amt]}</span>
+        </span>
+      `).join('');
+
+      summaryBar.innerHTML = `
+        <div class="flex items-center gap-1.5 overflow-x-auto pr-2 scrollbar-none">
+          ${tagsHtml}
+        </div>
+        <div class="font-black text-amber-400 ml-auto whitespace-nowrap flex items-center gap-1 pl-2 border-l border-slate-800">
+          <span class="text-[10px] text-slate-400 font-normal">全平台:</span>
+          <span class="text-xs text-amber-300 font-black">$${grandTotal}</span>
+        </div>
+      `;
+    }
+
+    // 初始化 Sortable 拖拽 (啟用 Swap 插件專屬一對一對調模式，防止鄰近泡泡跳動與自動遞補)
+    let sortableInstance = null;
+    function initSortable() {
+      const container = document.getElementById('bubble-container');
+      if (sortableInstance) {
+        sortableInstance.destroy();
+      }
+      
+      sortableInstance = new Sortable(container, {
+        swap: true, // 啟用一對一精準對調模式
+        swapClass: 'bg-amber-500/10', // 對調時的亮色輔助提示
+        animation: 150,
+        handle: '.drag-handle', // 僅按住右上角橫線手柄觸發拖拽
+        ghostClass: 'sortable-ghost',
+        dragClass: 'sortable-drag',
+        onEnd: function () {
+          saveStateToHistory();
+          const newOrder = Array.from(container.children).map(el => el.dataset.id);
+          activeBankIds = newOrder;
+          saveActiveBankIds();
+        }
+      });
+    }
+
+    // 打開金額選擇 Modal
+    function openModal(bankId) {
+      const bank = ALL_BANKS_POOL.find(b => b.id === bankId);
+      if (!bank) return;
+
+      currentBankId = bankId;
+      document.getElementById('modal-icon').innerHTML = bank.svg;
+      document.getElementById('modal-title').textContent = bank.name;
+      
+      updateModalSelectedList();
+
+      document.getElementById('modal-backdrop').classList.remove('hidden');
+    }
+
+    // 更新 Modal 中的金額標籤與總計
+    function updateModalSelectedList() {
+      const items = selections[currentBankId] || [];
+      const listEl = document.getElementById('selected-items-list');
+      const countTag = document.getElementById('modal-count-tag');
+      const totalSumEl = document.getElementById('modal-total-sum');
+
+      countTag.textContent = `${items.length}/3`;
+      totalSumEl.textContent = getSum(items);
+
+      if (items.length === 0) {
+        listEl.innerHTML = `<span class="text-xs text-slate-500 italic">尚未選擇任何金額</span>`;
+        return;
+      }
+
+      listEl.innerHTML = items.map((val, idx) => `
+        <span class="btn-selected-item inline-flex items-center space-x-1.5 bg-amber-400/20 text-amber-300 font-bold px-3 py-1.5 rounded-xl border border-amber-400/40 text-sm cursor-pointer hover:bg-amber-400/30 transition active:scale-95" data-idx="${idx}">
+          <span>$${val}</span>
+          <span class="text-xs opacity-70 hover:opacity-100">✕</span>
+        </span>
+      `).join('');
+
+      // 為選取的金額標籤（點擊整個方塊即可刪除）綁定事件
+      document.querySelectorAll('.btn-selected-item').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const idx = parseInt(btn.dataset.idx);
+          removeAmountAt(idx);
+        });
+      });
+    }
+
+    // 新增金額
+    function addAmount(val) {
+      if (!currentBankId) return;
+      if (!selections[currentBankId]) selections[currentBankId] = [];
+
+      if (selections[currentBankId].length >= 3) {
+        return;
+      }
+
+      saveStateToHistory();
+      selections[currentBankId].push(val);
+      saveSelections();
+      updateModalSelectedList();
+      renderBubbles();
+    }
+
+    // 刪除特定位置金額
+    function removeAmountAt(idx) {
+      if (!currentBankId || !selections[currentBankId]) return;
+      saveStateToHistory();
+      selections[currentBankId].splice(idx, 1);
+      saveSelections();
+      updateModalSelectedList();
+      renderBubbles();
+    }
+
+    // 清空當前機構金額
+    function clearCurrentBankAmounts() {
+      if (!currentBankId) return;
+      saveStateToHistory();
+      selections[currentBankId] = [];
+      saveSelections();
+      updateModalSelectedList();
+      renderBubbles();
+    }
+
+    // 隱藏當前泡泡 (替換為 placeholder 空位)
+    function hideCurrentBubble() {
+      if (!currentBankId) return;
+      
+      const idx = activeBankIds.indexOf(currentBankId);
+      if (idx !== -1) {
+        saveStateToHistory();
+        activeBankIds[idx] = `empty_${Date.now()}`;
+        saveActiveBankIds();
+      }
+
+      closeModal();
+      renderBubbles();
+    }
+
+    function closeModal() {
+      document.getElementById('modal-backdrop').classList.add('hidden');
+      currentBankId = null;
+    }
+
+    // 開啟隱藏/還原機構彈窗
+    function openAddBankModal() {
+      const listEl = document.getElementById('hidden-banks-list');
+      listEl.innerHTML = '';
+
+      const hiddenBanks = ALL_BANKS_POOL.filter(b => !activeBankIds.includes(b.id));
+
+      if (hiddenBanks.length === 0) {
+        listEl.innerHTML = `<div class="text-center py-4 text-xs text-slate-500">所有 8 家銀行泡泡目前均已顯示在主頁面！</div>`;
+      } else {
+        hiddenBanks.forEach(bank => {
+          const item = document.createElement('div');
+          item.className = 'flex items-center justify-between p-2.5 bg-slate-800/80 rounded-xl border border-slate-700/60 cursor-pointer hover:bg-slate-700/80 transition active:scale-98';
+          item.innerHTML = `
+            <div class="flex items-center space-x-3">
+              <div class="w-7 h-7 rounded-lg overflow-hidden flex items-center justify-center">${bank.svg}</div>
+              <span class="text-xs font-bold text-slate-200">${bank.name}</span>
+            </div>
+            <span class="text-xs text-amber-400 font-semibold">+ 還原顯示</span>
+          `;
+          item.addEventListener('click', () => {
+            saveStateToHistory();
+            const emptyIdx = activeBankIds.findIndex(id => id.startsWith('empty_'));
+            if (emptyIdx !== -1) {
+              activeBankIds[emptyIdx] = bank.id;
+            } else {
+              activeBankIds.push(bank.id);
+            }
+            saveActiveBankIds();
+            renderBubbles();
+            openAddBankModal();
+          });
+          listEl.appendChild(item);
+        });
+      }
+
+      document.getElementById('add-modal-backdrop').classList.remove('hidden');
+    }
+
+    // 初始化頁面事件
+    window.addEventListener('DOMContentLoaded', () => {
+      applyTheme();
+      applyGridMode();
+
+      // 復原 (Undo) 按鈕事件
+      document.getElementById('btn-undo').addEventListener('click', undoLastAction);
+
+      // 深淺色切換
+      document.getElementById('btn-theme-toggle').addEventListener('click', () => {
+        isDarkMode = !isDarkMode;
+        applyTheme();
+      });
+
+      // 格局模式切換 (6格 -> 8格 -> 九宮格)
+      document.getElementById('btn-grid-toggle').addEventListener('click', () => {
+        if (gridMode === '6') gridMode = '8';
+        else if (gridMode === '8') gridMode = '9';
+        else gridMode = '6';
+        applyGridMode();
+      });
+
+      // 快捷鍵：一鍵預設重置
+      document.getElementById('btn-reset-default').addEventListener('click', () => {
+        saveStateToHistory();
+        activeBankIds = ALL_BANKS_POOL.map(b => b.id);
+        selections = {};
+        saveActiveBankIds();
+        saveSelections();
+        renderBubbles();
+      });
+
+      // 快捷鍵：一鍵核銷全平台
+      document.getElementById('btn-clear-all-platforms').addEventListener('click', () => {
+        saveStateToHistory();
+        selections = {};
+        saveSelections();
+        renderBubbles();
+      });
+
+      // 特效管理彈窗
+      document.getElementById('btn-toggle-fx').addEventListener('click', () => {
+        updateFxModalStatus();
+        document.getElementById('fx-modal-backdrop').classList.remove('hidden');
+      });
+
+      document.getElementById('btn-close-fx').addEventListener('click', () => {
+        document.getElementById('fx-modal-backdrop').classList.add('hidden');
+      });
+
+      document.getElementById('btn-cancel-fx').addEventListener('click', () => {
+        document.getElementById('fx-modal-backdrop').classList.add('hidden');
+      });
+
+      document.getElementById('btn-toggle-glow').addEventListener('click', () => {
+        isGlowEnabled = !isGlowEnabled;
+        localStorage.setItem(STORAGE_KEY_GLOW, isGlowEnabled);
+        updateFxModalStatus();
+        renderBubbles();
+      });
+
+      document.getElementById('btn-toggle-logo').addEventListener('click', () => {
+        isLogoEnabled = !isLogoEnabled;
+        localStorage.setItem(STORAGE_KEY_LOGO, isLogoEnabled);
+        updateFxModalStatus();
+        renderBubbles();
+      });
+
+      function updateFxModalStatus() {
+        const glowStatus = document.getElementById('status-glow');
+        const logoStatus = document.getElementById('status-logo');
+
+        if (isGlowEnabled) {
+          glowStatus.textContent = '已開啟';
+          glowStatus.className = 'text-xs font-bold px-2 py-1 rounded-lg bg-emerald-500/20 text-emerald-400';
+        } else {
+          glowStatus.textContent = '已關閉';
+          glowStatus.className = 'text-xs font-bold px-2 py-1 rounded-lg bg-rose-500/20 text-rose-400';
+        }
+
+        if (isLogoEnabled) {
+          logoStatus.textContent = '已開啟';
+          logoStatus.className = 'text-xs font-bold px-2 py-1 rounded-lg bg-emerald-500/20 text-emerald-400';
+        } else {
+          logoStatus.textContent = '已關閉';
+          logoStatus.className = 'text-xs font-bold px-2 py-1 rounded-lg bg-rose-500/20 text-rose-400';
+        }
+      }
+
+      // 金額點選按鈕
+      document.querySelectorAll('.btn-amount-pick').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const val = Number(btn.dataset.val);
+          addAmount(val);
+        });
+      });
+
+      // 關閉金額 Modal
+      document.getElementById('btn-close').addEventListener('click', closeModal);
+      document.getElementById('btn-delete-bubble').addEventListener('click', hideCurrentBubble);
+      document.getElementById('btn-clear-all').addEventListener('click', clearCurrentBankAmounts);
+
+      // 點擊彈窗外背景關閉彈窗
+      const modalBackdrops = [
+        { id: 'modal-backdrop', closeFn: closeModal },
+        { id: 'add-modal-backdrop', closeFn: () => document.getElementById('add-modal-backdrop').classList.add('hidden') },
+        { id: 'share-modal-backdrop', closeFn: () => document.getElementById('share-modal-backdrop').classList.add('hidden') },
+        { id: 'install-modal-backdrop', closeFn: () => document.getElementById('install-modal-backdrop').classList.add('hidden') },
+        { id: 'fx-modal-backdrop', closeFn: () => document.getElementById('fx-modal-backdrop').classList.add('hidden') }
+      ];
+
+      modalBackdrops.forEach(({ id, closeFn }) => {
+        const backdrop = document.getElementById(id);
+        if (backdrop) {
+          backdrop.addEventListener('click', (e) => {
+            if (e.target === backdrop) {
+              closeFn();
+            }
+          });
+        }
+      });
+
+      // 還原機構 Modal
+      document.getElementById('btn-open-add-bank').addEventListener('click', openAddBankModal);
+      document.getElementById('btn-cancel-add').addEventListener('click', () => {
+        document.getElementById('add-modal-backdrop').classList.add('hidden');
+      });
+
+      // 分享 Modal
+      document.getElementById('btn-share-app').addEventListener('click', () => {
+        document.getElementById('share-modal-backdrop').classList.remove('hidden');
+        
+        // 生成 QR Code
+        const qrContainer = document.getElementById('qrcode-container');
+        qrContainer.innerHTML = '';
+        new QRCode(qrContainer, {
+          text: window.location.href,
+          width: 128,
+          height: 128,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H
+        });
+      });
+
+      document.getElementById('btn-close-share').addEventListener('click', () => {
+        document.getElementById('share-modal-backdrop').classList.add('hidden');
+      });
+
+      // 手機原生分享
+      document.getElementById('btn-native-share').addEventListener('click', () => {
+        if (navigator.share) {
+          navigator.share({
+            title: '消費大師',
+            text: '輕鬆記錄消費券金額與卡片金額！',
+            url: window.location.href,
+          }).catch(() => {});
+        } else {
+          document.execCommand('copy');
+        }
+      });
+
+      // JSON 數據導出
+      document.getElementById('btn-export-json').addEventListener('click', () => {
+        const exportData = {
+          activeBankIds,
+          selections,
+          exportedAt: new Date().toISOString()
+        };
+        const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `macau_voucher_backup_${new Date().toISOString().slice(0,10)}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      // JSON 數據匯入
+      document.getElementById('file-import-json').addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          try {
+            const data = JSON.parse(evt.target.result);
+            if (data.activeBankIds) activeBankIds = data.activeBankIds;
+            if (data.selections) selections = data.selections;
+            saveActiveBankIds();
+            saveSelections();
+            renderBubbles();
+            document.getElementById('share-modal-backdrop').classList.add('hidden');
+          } catch (err) {}
+        };
+        reader.readAsText(file);
+      });
+
+      // PWA 安裝指引 Modal
+      document.getElementById('btn-install-pwa').addEventListener('click', () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+              console.log('User accepted the install prompt');
+            }
+            deferredPrompt = null;
+          });
+        } else {
+          document.getElementById('install-modal-backdrop').classList.remove('hidden');
+        }
+      });
+
+      document.getElementById('btn-close-install').addEventListener('click', () => {
+        document.getElementById('install-modal-backdrop').classList.add('hidden');
+      });
+
+      const btnTriggerPwa = document.getElementById('btn-trigger-pwa-prompt');
+      if (btnTriggerPwa) {
+        btnTriggerPwa.addEventListener('click', () => {
+          document.getElementById('install-modal-backdrop').classList.add('hidden');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
