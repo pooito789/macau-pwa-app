@@ -679,8 +679,8 @@
           : 'text-sm sm:text-base font-black';
           
         const detailAmountSize = isCompact 
-          ? (items.length > 0 ? 'text-sm sm:text-base font-bold' : 'text-[11px] font-semibold text-slate-500/70')
-          : (items.length > 0 ? 'text-lg sm:text-xl font-bold' : 'text-xs font-semibold text-slate-500/70');
+          ? (items.length > 0 ? 'text-xs sm:text-sm font-bold' : 'text-[10px] font-semibold text-slate-500/70')
+          : (items.length > 0 ? 'text-base sm:text-lg font-bold' : 'text-[11px] font-semibold text-slate-500/70');
               
         const logoSize = isCompact ? 'w-16 h-16' : 'w-20 h-20';
 
@@ -706,14 +706,14 @@
             </div>
           </div>
 
-          <!-- 卡片中央：清楚呈現所選的三個金額 -->
-          <div class="relative z-10 my-auto pointer-events-none">
-            <div class="${detailAmountSize} ${items.length > 0 ? (isDarkMode ? 'text-amber-300' : 'text-amber-600') : ''} tracking-tight leading-snug">
+          <!-- 卡片中央：金額全部置中且尺寸縮小 0.1 倍 -->
+          <div class="relative z-10 my-auto pointer-events-none flex items-center justify-center text-center">
+            <div class="${detailAmountSize} ${items.length > 0 ? (isDarkMode ? 'text-amber-300' : 'text-amber-600') : ''} tracking-tight leading-snug flex flex-wrap items-center justify-center gap-1">
               ${selectedListStr}
             </div>
           </div>
 
-          <!-- 卡片右下角：總金額標示（調整字體更小更精緻） -->
+          <!-- 卡片右下角：總金額標示（位置保持不變） -->
           <div class="relative z-10 flex justify-end items-center pointer-events-none">
             ${items.length > 0 ? `
               <div class="text-[9px] sm:text-[10px] font-semibold px-1.5 py-0.5 rounded-md ${
