@@ -151,18 +151,18 @@
       </button>
 
       <button id="btn-clear-all-platforms" class="inline-flex items-center space-x-1 bg-rose-500/20 hover:bg-rose-500/30 text-rose-400 text-xs font-bold px-2.5 py-1.5 rounded-full border border-rose-500/40 shadow-sm transition active:scale-95">
-        <span>🧹 一鍵全核銷</span>
+        <span>🧹 一鍵核銷</span>
       </button>
 
       <button id="btn-toggle-fx" class="inline-flex items-center space-x-1 bg-slate-700/60 hover:bg-slate-700/80 text-slate-200 text-xs font-bold px-2.5 py-1.5 rounded-full border border-slate-600 shadow-sm transition active:scale-95">
-        <span>⚡ 光畫控制</span>
+        <span>⚡ 特效控制</span>
       </button>
     </div>
 
     <!-- 操作按鈕列（第二列）：新增至主畫面 / 還原機構 / 分享APP -->
     <div class="flex flex-wrap justify-center gap-1.5 my-0.5">
       <button id="btn-install-pwa" class="inline-flex items-center space-x-1 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 text-xs font-bold px-3 py-1.5 rounded-full border border-emerald-500/40 shadow-sm transition active:scale-95">
-        <span>📲 新增捷徑至主畫面</span>
+        <span>📲 新增至主畫面</span>
       </button>
 
       <button id="btn-open-add-bank" class="inline-flex items-center space-x-1 bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 text-xs font-bold px-3 py-1.5 rounded-full border border-amber-500/40 shadow-sm transition active:scale-95">
@@ -613,8 +613,12 @@
         if (!bank) {
           const emptySlot = document.createElement('div');
           emptySlot.dataset.id = id;
-          emptySlot.className = `bubble-card relative rounded-2xl ${heightClass} border border-dashed border-slate-800/40 bg-slate-900/10 pointer-events-auto flex items-center justify-center transition-all duration-300`;
-          emptySlot.innerHTML = `<span class="text-sm text-slate-700/60 font-semibold select-none">—</span>`;
+          emptySlot.className = `bubble-card relative rounded-2xl ${heightClass} pointer-events-auto flex items-center justify-center transition-all duration-300 ${
+            isDarkMode 
+              ? 'border border-dashed border-slate-800/40 bg-slate-900/10' 
+              : 'border-0 bg-transparent'
+          }`;
+          emptySlot.innerHTML = `<span class="text-sm font-semibold select-none ${isDarkMode ? 'text-slate-700/60' : 'text-slate-400/80'}">—</span>`;
           container.appendChild(emptySlot);
           return;
         }
