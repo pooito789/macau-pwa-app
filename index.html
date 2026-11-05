@@ -151,11 +151,11 @@
       </button>
 
       <button id="btn-clear-all-platforms" class="inline-flex items-center space-x-1 bg-rose-500/20 hover:bg-rose-500/30 text-rose-400 text-xs font-bold px-2.5 py-1.5 rounded-full border border-rose-500/40 shadow-sm transition active:scale-95">
-        <span>🧹 一鍵核銷</span>
+        <span>🧹 一鍵全核銷</span>
       </button>
 
       <button id="btn-toggle-fx" class="inline-flex items-center space-x-1 bg-slate-700/60 hover:bg-slate-700/80 text-slate-200 text-xs font-bold px-2.5 py-1.5 rounded-full border border-slate-600 shadow-sm transition active:scale-95">
-        <span>⚡ 特效控制</span>
+        <span>⚡ 光畫控制</span>
       </button>
     </div>
 
@@ -170,7 +170,7 @@
       </button>
 
       <button id="btn-share-app" class="inline-flex items-center space-x-1 bg-sky-500/20 hover:bg-sky-500/30 text-sky-400 text-xs font-bold px-3 py-1.5 rounded-full border border-sky-500/40 shadow-sm transition active:scale-95">
-        <span>🔗 分享連結</span>
+        <span>🔗 分享APP連結</span>
       </button>
     </div>
 
@@ -233,11 +233,11 @@
       <div class="space-y-3">
         <div class="text-xs text-slate-300 font-medium">點擊金額直接加入：</div>
         <div class="grid grid-cols-3 gap-2">
-          <button class="btn-amount-pick bg-slate-800 hover:bg-amber-400/20 hover:border-amber-400/60 text-slate-100 font-bold text-lg py-2.5 rounded-xl border border-slate-700/80 transition active:scale-95" data-val="10">$10</button>
-          <button class="btn-amount-pick bg-slate-800 hover:bg-amber-400/20 hover:border-amber-400/60 text-slate-100 font-bold text-lg py-2.5 rounded-xl border border-slate-700/80 transition active:scale-95" data-val="20">$20</button>
-          <button class="btn-amount-pick bg-slate-800 hover:bg-amber-400/20 hover:border-amber-400/60 text-slate-100 font-bold text-lg py-2.5 rounded-xl border border-slate-700/80 transition active:scale-95" data-val="50">$50</button>
-          <button class="btn-amount-pick bg-slate-800 hover:bg-amber-400/20 hover:border-amber-400/60 text-slate-100 font-bold text-lg py-2.5 rounded-xl border border-slate-700/80 transition active:scale-95" data-val="100">$100</button>
-          <button class="btn-amount-pick bg-slate-800 hover:bg-amber-400/20 hover:border-amber-400/60 text-slate-100 font-bold text-lg py-2.5 rounded-xl border border-slate-700/80 transition active:scale-95" data-val="200">$200</button>
+          <button class="btn-amount-pick bg-emerald-950/80 hover:bg-emerald-900 border-emerald-500/60 text-emerald-300 font-black text-lg py-2.5 rounded-xl border transition active:scale-95 shadow-sm" data-val="10">$10</button>
+          <button class="btn-amount-pick bg-sky-950/80 hover:bg-sky-900 border-sky-500/60 text-sky-300 font-black text-lg py-2.5 rounded-xl border transition active:scale-95 shadow-sm" data-val="20">$20</button>
+          <button class="btn-amount-pick bg-purple-950/80 hover:bg-purple-900 border-purple-500/60 text-purple-300 font-black text-lg py-2.5 rounded-xl border transition active:scale-95 shadow-sm" data-val="50">$50</button>
+          <button class="btn-amount-pick bg-amber-950/80 hover:bg-amber-900 border-amber-500/60 text-amber-300 font-black text-lg py-2.5 rounded-xl border transition active:scale-95 shadow-sm" data-val="100">$100</button>
+          <button class="btn-amount-pick bg-rose-950/80 hover:bg-rose-900 border-rose-500/60 text-rose-300 font-black text-lg py-2.5 rounded-xl border transition active:scale-95 shadow-sm" data-val="200">$200</button>
         </div>
 
         <hr class="border-slate-800 my-3">
@@ -361,6 +361,18 @@
           <span id="status-glow" class="text-xs font-bold px-2 py-1 rounded-lg bg-emerald-500/20 text-emerald-400">已開啟</span>
         </button>
 
+        <!-- 新增：金額色彩光效開關按鈕 -->
+        <button id="btn-toggle-badge-color" class="w-full bg-slate-800 hover:bg-slate-700/80 border border-slate-700 text-left p-3.5 rounded-2xl flex items-center justify-between transition active:scale-95">
+          <div class="flex items-center space-x-3">
+            <span class="text-xl">🎨</span>
+            <div>
+              <div class="font-bold text-sm text-slate-100">一鍵關閉/開啟金額光效</div>
+              <div class="text-[11px] text-slate-400">控制不同面額的專屬彩色背景框</div>
+            </div>
+          </div>
+          <span id="status-badge-color" class="text-xs font-bold px-2 py-1 rounded-lg bg-emerald-500/20 text-emerald-400">已開啟</span>
+        </button>
+
         <button id="btn-toggle-logo" class="w-full bg-slate-800 hover:bg-slate-700/80 border border-slate-700 text-left p-3.5 rounded-2xl flex items-center justify-between transition active:scale-95">
           <div class="flex items-center space-x-3">
             <span class="text-xl">🖼️</span>
@@ -454,6 +466,7 @@
     const STORAGE_KEY_GRID = 'macau_voucher_grid_mode_v3';
     const STORAGE_KEY_GLOW = 'macau_voucher_glow_v3';
     const STORAGE_KEY_LOGO = 'macau_voucher_logo_v3';
+    const STORAGE_KEY_BADGE_COLOR = 'macau_voucher_badge_color_v3';
 
     let activeBankIds = loadActiveBankIds();
     let selections = loadSelections();
@@ -463,6 +476,7 @@
     let gridMode = localStorage.getItem(STORAGE_KEY_GRID) || '6';
     let isGlowEnabled = localStorage.getItem(STORAGE_KEY_GLOW) !== 'false';
     let isLogoEnabled = localStorage.getItem(STORAGE_KEY_LOGO) !== 'false';
+    let isBadgeColorEnabled = localStorage.getItem(STORAGE_KEY_BADGE_COLOR) !== 'false';
 
     // 復原 (Undo) 歷史紀錄狀態庫 (最多儲存 20 步)
     let historyStack = [];
@@ -540,6 +554,29 @@
     function getSum(arr) {
       if (!Array.isArray(arr)) return 0;
       return arr.reduce((a, b) => a + Number(b), 0);
+    }
+
+    // 根據金額回傳專屬超粗體彩色膠囊框樣式
+    function getAmountBadgeStyle(val) {
+      if (!isBadgeColorEnabled) {
+        return 'bg-slate-800/80 border-slate-700 text-slate-200 dark:bg-slate-800/90 dark:border-slate-700 dark:text-slate-200';
+      }
+
+      const num = Number(val);
+      switch(num) {
+        case 10:
+          return 'bg-emerald-950/80 border-emerald-500/60 text-emerald-300 dark:bg-emerald-950/90 dark:border-emerald-500/70 dark:text-emerald-300';
+        case 20:
+          return 'bg-sky-950/80 border-sky-500/60 text-sky-300 dark:bg-sky-950/90 dark:border-sky-500/70 dark:text-sky-300';
+        case 50:
+          return 'bg-purple-950/80 border-purple-500/60 text-purple-300 dark:bg-purple-950/90 dark:border-purple-500/70 dark:text-purple-300';
+        case 100:
+          return 'bg-amber-950/80 border-amber-500/60 text-amber-300 dark:bg-amber-950/90 dark:border-amber-500/70 dark:text-amber-300';
+        case 200:
+          return 'bg-rose-950/80 border-rose-500/60 text-rose-300 dark:bg-rose-950/90 dark:border-rose-500/70 dark:text-rose-300';
+        default:
+          return 'bg-slate-800/80 border-slate-600/60 text-amber-300 dark:bg-slate-800/90 dark:border-slate-600/70 dark:text-amber-300';
+      }
     }
 
     // 主題套用
@@ -626,9 +663,9 @@
         const items = selections[bank.id] || [];
         const total = getSum(items);
         
-        // 所選金額的清楚標示列表
+        // 所選金額的清楚標示列表（彩色超粗膠囊框）
         const selectedListStr = items.length > 0 
-          ? items.map(v => `$${v}`).join('  ') 
+          ? items.map(v => `<span class="inline-block px-2 py-0.5 my-0.5 rounded-lg border font-black ${getAmountBadgeStyle(v)} shadow-sm">$${v}</span>`).join(' ') 
           : '按此輸入金額';
 
         const bubble = document.createElement('div');
@@ -836,9 +873,9 @@
       }
 
       listEl.innerHTML = items.map((val, idx) => `
-        <span class="btn-selected-item inline-flex items-center space-x-1.5 bg-amber-400/20 text-amber-300 font-bold px-3 py-1.5 rounded-xl border border-amber-400/40 text-sm cursor-pointer hover:bg-amber-400/30 transition active:scale-95" data-idx="${idx}">
+        <span class="btn-selected-item inline-flex items-center space-x-1.5 font-black px-3 py-1.5 rounded-xl border text-sm cursor-pointer transition active:scale-95 shadow-sm ${getAmountBadgeStyle(val)}" data-idx="${idx}">
           <span>$${val}</span>
-          <span class="text-xs opacity-70 hover:opacity-100">✕</span>
+          <span class="text-xs opacity-70 hover:opacity-100 ml-1">✕</span>
         </span>
       `).join('');
 
@@ -863,6 +900,8 @@
 
       saveStateToHistory();
       selections[currentBankId].push(val);
+      // 自動將金額由小到大排序 (左至右)
+      selections[currentBankId].sort((a, b) => Number(a) - Number(b));
       saveSelections();
       updateModalSelectedList();
       renderBubbles();
@@ -1008,6 +1047,16 @@
         renderBubbles();
       });
 
+      document.getElementById('btn-toggle-badge-color').addEventListener('click', () => {
+        isBadgeColorEnabled = !isBadgeColorEnabled;
+        localStorage.setItem(STORAGE_KEY_BADGE_COLOR, isBadgeColorEnabled);
+        updateFxModalStatus();
+        renderBubbles();
+        if (currentBankId) {
+          updateModalSelectedList();
+        }
+      });
+
       document.getElementById('btn-toggle-logo').addEventListener('click', () => {
         isLogoEnabled = !isLogoEnabled;
         localStorage.setItem(STORAGE_KEY_LOGO, isLogoEnabled);
@@ -1017,6 +1066,7 @@
 
       function updateFxModalStatus() {
         const glowStatus = document.getElementById('status-glow');
+        const badgeColorStatus = document.getElementById('status-badge-color');
         const logoStatus = document.getElementById('status-logo');
 
         if (isGlowEnabled) {
@@ -1025,6 +1075,14 @@
         } else {
           glowStatus.textContent = '已關閉';
           glowStatus.className = 'text-xs font-bold px-2 py-1 rounded-lg bg-rose-500/20 text-rose-400';
+        }
+
+        if (isBadgeColorEnabled) {
+          badgeColorStatus.textContent = '已開啟';
+          badgeColorStatus.className = 'text-xs font-bold px-2 py-1 rounded-lg bg-emerald-500/20 text-emerald-400';
+        } else {
+          badgeColorStatus.textContent = '已關閉';
+          badgeColorStatus.className = 'text-xs font-bold px-2 py-1 rounded-lg bg-rose-500/20 text-rose-400';
         }
 
         if (isLogoEnabled) {
