@@ -8,7 +8,6 @@
   <!-- Mobile & PWA Meta Tags -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="消費大師">
   <meta name="theme-color" content="#007A5E">
@@ -57,21 +56,21 @@
       padding-bottom: env(safe-area-inset-bottom);
     }
     
-+   /* 專門針對 iOS 全螢幕 (Standalone/PWA) 模式修正頂部遮擋問題 */
-+   @supports (-webkit-touch-callout: none) {
-+     @media all and (display-mode: standalone) {
-+       header {
-+         padding-top: max(env(safe-area-inset-top), 24px) !important;
-+       }
-+     }
-+   }
+    /* 專門針對 iOS 全螢幕 (Standalone/PWA) 模式修正頂部遮擋問題 */
+    @supports (-webkit-touch-callout: none) {
+      @media all and (display-mode: standalone) {
+        header {
+          padding-top: max(env(safe-area-inset-top), 24px) !important;
+        }
+      }
+    }
 
-+   /* 橫向旋轉屏鎖定提示遮罩 */
-+   @media screen and (orientation: landscape) and (max-height: 500px) {
-+     #portrait-lock-overlay {
-+       display: flex !important;
-+     }
-+   }
+    /* 橫向旋轉屏鎖定提示遮罩 */
+    @media screen and (orientation: landscape) and (max-height: 500px) {
+      #portrait-lock-overlay {
+        display: flex !important;
+      }
+    }
 
     /* 典雅端莊傳統隸書 */
     .font-calligraphy {
@@ -131,12 +130,12 @@
 </head>
 <body class="bg-slate-950 text-slate-100 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col justify-between p-3 sm:p-5 font-sans select-none antialiased transition-colors duration-300">
 
-+ <!-- 強制直向旋轉提示圖層 -->
-+ <div id="portrait-lock-overlay" class="fixed inset-0 bg-slate-950/95 backdrop-blur-md z-[9999] hidden flex-col items-center justify-center p-6 text-center text-slate-100">
-+   <div class="w-16 h-16 mb-4 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-3xl animate-bounce">📱</div>
-+   <h3 class="text-xl font-bold text-amber-300 mb-2">請轉回直向使用</h3>
-+   <p class="text-xs text-slate-400 max-w-xs leading-relaxed">「消費大師」專為直向操作打造，請將手機旋轉回垂直方向以獲得最佳使用體驗。</p>
-+ </div>
+  <!-- 強制直向旋轉提示圖層 -->
+  <div id="portrait-lock-overlay" class="fixed inset-0 bg-slate-950/95 backdrop-blur-md z-[9999] hidden flex-col items-center justify-center p-6 text-center text-slate-100">
+    <div class="w-16 h-16 mb-4 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-3xl animate-bounce">📱</div>
+    <h3 class="text-xl font-bold text-amber-300 mb-2">請轉回直向使用</h3>
+    <p class="text-xs text-slate-400 max-w-xs leading-relaxed">「消費大師」專為直向操作打造，請將手機旋轉回垂直方向以獲得最佳使用體驗。</p>
+  </div>
 
   <!-- 頂部標題與管理按鈕（增加了適度下邊距 mb-2） -->
   <header class="w-full max-w-md mx-auto pt-1 pb-2 relative flex flex-col items-center mb-2">
