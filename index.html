@@ -8,7 +8,8 @@
   <!-- Mobile & PWA Meta Tags -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+- <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
++ <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="消費大師">
   <meta name="theme-color" content="#007A5E">
   
@@ -56,6 +57,22 @@
       padding-bottom: env(safe-area-inset-bottom);
     }
     
++   /* 專門針對 iOS 全螢幕 (Standalone/PWA) 模式修正頂部遮擋問題 */
++   @supports (-webkit-touch-callout: none) {
++     @media all and (display-mode: standalone) {
++       header {
++         padding-top: max(env(safe-area-inset-top), 24px) !important;
++       }
++     }
++   }
+
++   /* 橫向旋轉屏鎖定提示遮罩 */
++   @media screen and (orientation: landscape) and (max-height: 500px) {
++     #portrait-lock-overlay {
++       display: flex !important;
++     }
++   }
+
     /* 典雅端莊傳統隸書 */
     .font-calligraphy {
       font-family: 'LiSu', '隸書', 'STLiti', 'Baoli SC', 'Noto Serif TC', serif;
@@ -113,6 +130,13 @@
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col justify-between p-3 sm:p-5 font-sans select-none antialiased transition-colors duration-300">
+
++ <!-- 強制直向旋轉提示圖層 -->
++ <div id="portrait-lock-overlay" class="fixed inset-0 bg-slate-950/95 backdrop-blur-md z-[9999] hidden flex-col items-center justify-center p-6 text-center text-slate-100">
++   <div class="w-16 h-16 mb-4 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center text-3xl animate-bounce">📱</div>
++   <h3 class="text-xl font-bold text-amber-300 mb-2">請轉回直向使用</h3>
++   <p class="text-xs text-slate-400 max-w-xs leading-relaxed">「消費大師」專為直向操作打造，請將手機旋轉回垂直方向以獲得最佳使用體驗。</p>
++ </div>
 
   <!-- 頂部標題與管理按鈕（增加了適度下邊距 mb-2） -->
   <header class="w-full max-w-md mx-auto pt-1 pb-2 relative flex flex-col items-center mb-2">
@@ -624,21 +648,21 @@
       const container = document.getElementById('bubble-container');
       container.innerHTML = '';
 
-      let heightClass = 'h-40 sm:h-44 min-h-[160px] p-4';
+      let heightClass = 'h-40 sm:h-44 p-4';
 
-      // 設置網格樣式與高度適應 (強制所有卡片高度固定，不隨內容多寡改變)
+      // 設置網格樣式與高度適應
       if (gridMode === '9') {
         container.className = "grid grid-cols-3 gap-2 sm:gap-2.5 w-full max-w-md mx-auto";
-        // 九宮格模式：全排統一拉長 0.2 倍，並使用固定高度 h-[160px] 配合 min-h-[160px]，絕對不縮短
-        heightClass = 'h-[160px] sm:h-[180px] min-h-[160px] sm:min-h-[180px] p-2.5 sm:p-3';
+        // 九宮格模式：強制全域所有泡泡均勻拉長 0.2 倍 (h-44 sm:h-48)
+        heightClass = 'h-44 sm:h-48 p-3 flex-1 min-h-[160px]';
       } else if (gridMode === '8') {
-        // 2 直行 8 格模式：固定高度
+        // 2 直行 8 格模式：高度適當拉長，完美充滿整個螢幕高度
         container.className = "grid grid-cols-2 gap-2.5 sm:gap-3 w-full max-w-md mx-auto";
-        heightClass = 'h-36 sm:h-40 min-h-[144px] p-3.5';
+        heightClass = 'h-32 sm:h-36 p-3.5';
       } else {
-        // 6 格模式：固定高度
+        // 6 格模式還原回原版的標準網格
         container.className = "grid grid-cols-2 gap-3 sm:gap-4 w-full max-w-md mx-auto";
-        heightClass = 'h-40 sm:h-44 min-h-[160px] p-4';
+        heightClass = 'h-40 sm:h-44 p-4';
       }
 
       // 僅渲染存在於 activeBankIds 列表中的機構卡片
@@ -664,9 +688,9 @@
         const items = selections[bank.id] || [];
         const total = getSum(items);
         
-        // 所選金額的清楚標示列表（彩色超粗膠囊框，尺寸調升至 text-[0.95em]）
+        // 所選金額的清楚標示列表（彩色超粗膠囊框）
         const selectedListStr = items.length > 0 
-          ? items.map(v => `<span class="inline-block px-1.5 py-0.5 my-0.5 rounded-lg border font-black ${getAmountBadgeStyle(v)} shadow-sm text-[0.95em]">$${v}</span>`).join(' ') 
+          ? items.map(v => `<span class="inline-block px-2 py-0.5 my-0.5 rounded-lg border font-black ${getAmountBadgeStyle(v)} shadow-sm">$${v}</span>`).join(' ') 
           : '按此輸入金額';
 
         const bubble = document.createElement('div');
@@ -680,10 +704,10 @@
           : 'text-sm sm:text-base font-black';
           
         const detailAmountSize = isCompact 
-          ? (items.length > 0 ? 'text-[11px] sm:text-xs font-bold' : 'text-[9px] font-semibold text-slate-500/70')
-          : (items.length > 0 ? 'text-sm sm:text-base font-bold' : 'text-[11px] font-semibold text-slate-500/70');
+          ? (items.length > 0 ? 'text-xs sm:text-sm font-bold' : 'text-[10px] font-semibold text-slate-500/70')
+          : (items.length > 0 ? 'text-base sm:text-lg font-bold' : 'text-[11px] font-semibold text-slate-500/70');
               
-        const logoSize = isCompact ? 'w-14 h-14' : 'w-20 h-20';
+        const logoSize = isCompact ? 'w-16 h-16' : 'w-20 h-20';
 
         bubble.className = `bubble-card relative overflow-hidden rounded-2xl ${heightClass} flex flex-col justify-between cursor-pointer border select-none transition-all duration-300 ${
           isDarkMode 
@@ -1230,6 +1254,22 @@
         });
       }
     });
+
+    // 動態生成並註冊離線使用的 Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        var swCode = "const CACHE_NAME = 'macau-master-v2';" +
+          "const ASSETS = ['./', 'https://cdn.tailwindcss.com'];" +
+          "self.addEventListener('install', (e) => { e.waitUntil(caches.open(CACHE_NAME).then((c) => c.addAll(ASSETS)).then(() => self.skipWaiting())); });" +
+          "self.addEventListener('activate', (e) => { e.waitUntil(caches.keys().then((keys) => Promise.all(keys.map((k) => k !== CACHE_NAME && caches.delete(k)))).then(() => self.clients.claim())); });" +
+          "self.addEventListener('fetch', (e) => { e.respondWith(caches.match(e.request).then((res) => res || fetch(e.request).catch(() => caches.match('./')))); });";
+        try {
+          var blob = new Blob([swCode], { type: 'application/javascript' });
+          var swUrl = URL.createObjectURL(blob);
+          navigator.serviceWorker.register(swUrl).catch(function(err) { console.log('SW reg failed', err); });
+        } catch(e) {}
+      });
+    }
   </script>
 </body>
 </html>
